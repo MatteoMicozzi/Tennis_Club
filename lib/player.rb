@@ -9,8 +9,8 @@ class Player
   end
 
   def new(first_name, last_name, nationality, date_of_birth)
-    @first_name = first_name
-    @last_name = last_name
+    @first_name = first_name.capitalize
+    @last_name = last_name.capitalize
     @nationality = nationality
     @date_of_birth = date_of_birth
   end
