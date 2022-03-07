@@ -8,7 +8,9 @@ class Club
   end
 
   def new_player(first_name, last_name, nationality, date_of_birth, player = Player.new)
-    player.new(first_name, last_name, nationality, date_of_birth)
-    @players.push(player)
+    if new_player_is_valid(first_name, last_name, nationality, date_of_birth, @players)
+      player.new(first_name, last_name, nationality, date_of_birth)
+      @players.push(player)
+    end
   end
 end

@@ -13,3 +13,7 @@ def valid_date(date_format)
   date = date_format.split('-')
   (date.length == 3) && ((1..31).include?(date[0].to_i)) && ((1..12).include?(date[1].to_i)) && (date[2].length == 4)
 end
+
+def inexistent_name(first_name, last_name, players)
+  players.each { |player| return false if (player.first_name == first_name) && (player.last_name == last_name) }
+end
