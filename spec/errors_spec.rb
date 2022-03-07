@@ -11,7 +11,13 @@ describe 'Errors' do
     end
     it 'will return false for inexistent nationality' do
       expect(new_player_is_valid("Jack", "Worren", "United States", "01-01-1983")).to eq(false)
-      expect(new_player_is_valid("Jack", "Worren", "Italian", "01-01-1983")).to eq(true)
+      expect(new_player_is_valid("Jack", "Worren", "American", "01-01-1983")).to eq(true)
+    end
+    it 'will return false for wrong date format' do
+      expect(new_player_is_valid("Jack", "Worren", "American", "01-31-1983")).to eq(false)
+      expect(new_player_is_valid("Jack", "Worren", "American", "01-01-19838")).to eq(false)
+      expect(new_player_is_valid("Jack", "Worren", "American", "01/01/1983")).to eq(false)
+      expect(new_player_is_valid("Jack", "Worren", "American", "01-01-1983")).to eq(true)
     end
   end
 end
