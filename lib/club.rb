@@ -3,8 +3,9 @@ require_relative 'player'
 class Club
   attr_reader :players
 
-  def initialize
+  def initialize(printer = Printer.new)
     @players = []
+    @printer = printer
   end
 
   def unranked_at_end()
@@ -34,5 +35,10 @@ class Club
       @players.push(player)
       sort_players()
     end
+  end
+
+  def list_all_players()
+    sort_players()
+    @printer.print_all(@players)
   end
 end

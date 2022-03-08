@@ -1,4 +1,5 @@
 require_relative 'validations'
+require_relative 'age'
 
 class PlayerDataEnteredError < StandardError; end
 class NameTypedError < StandardError; end
