@@ -14,7 +14,7 @@ describe Club do
       expect(subject.players.length).to eq(2)
     end
   end
-  describe '#sort_by_score & #update_rank_position' do
+  describe '#sort_players & #update_rank_position' do
     it "will sort players by their score in descending order" do
       subject.new_player('Tom', 'Smith', 'British', '10-07-1983')
       subject.new_player('Rom', 'Smith', 'British', '10-07-1983')
