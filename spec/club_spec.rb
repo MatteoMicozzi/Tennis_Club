@@ -14,7 +14,7 @@ describe Club do
       expect(subject.players.length).to eq(2)
     end
   end
-  describe '#sort_players & #update_rank_position' do
+  describe '#sort_players' do
     it "will sort players by their score in descending order" do
       subject.new_player('Tom', 'Smith', 'British', '10-07-1983')
       subject.new_player('Rom', 'Smith', 'British', '10-07-1983')
@@ -26,6 +26,8 @@ describe Club do
       subject.sort_players
       expect("1st: #{subject.players[0].score}, 2nd: #{subject.players[1].score}, 3rd: #{subject.players[2].score}").to eq("1st: 3, 2nd: 2, 3rd: 1")
     end
+  end
+  describe '#update_rank_position' do
     it "will update each player rank position in ascending order" do
       subject.new_player('Tom', 'Smith', 'British', '10-07-1983')
       subject.new_player('Rom', 'Smith', 'British', '10-07-1983')
