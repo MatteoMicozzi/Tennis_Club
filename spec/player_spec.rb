@@ -14,5 +14,9 @@ describe Player do
       expect(subject.first_name).to eq('Tom')
       expect(subject.last_name).to eq('Smith')
     end
+    it "will check the score points for a new player" do
+      subject.new('Tom', 'Smith', 'British', '10-07-1983')
+      expect(subject.score).to eq(1200)
+    end
   end
 end
