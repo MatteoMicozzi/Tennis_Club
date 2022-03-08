@@ -1,6 +1,6 @@
 class Player
   attr_reader :first_name, :last_name, :nationality, :date_of_birth
-  attr_accessor :score
+  attr_accessor :score, :rank_position
 
  def initialize
     @first_name
@@ -8,6 +8,7 @@ class Player
     @nationality
     @date_of_birth
     @score = 1200
+    @rank_position
   end
 
   def new(first_name, last_name, nationality, date_of_birth)
