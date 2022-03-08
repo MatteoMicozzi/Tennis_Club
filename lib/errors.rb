@@ -19,6 +19,8 @@ def new_player_is_valid(first_name, last_name, nationality, date_of_birth, playe
     raise NationalityEnteredError, "Please enter a valid Nationality!" unless valid_nationality(nationality)
     raise DateFormatError, "Please enter a valid date format! DD-MM-YYYY" unless valid_date(date_of_birth)
     raise DoubleNameError, "Please enter a different name! Already exist!" unless inexistent_name(first_name, last_name, players)
+    raise PlayerAgeError, "Player too young! At least 16 years old!" unless age(date_of_birth) > 16
+    raise PlayerAgeError, "Invalid year entry! Too old!" unless age(date_of_birth) < 100
 
   rescue PlayerDataEnteredError => error
     error_message(error)
@@ -29,6 +31,8 @@ def new_player_is_valid(first_name, last_name, nationality, date_of_birth, playe
   rescue DateFormatError => error
     error_message(error)
   rescue DoubleNameError => error
+    error_message(error)
+  rescue PlayerAgeError => error
     error_message(error)
   else
     return true

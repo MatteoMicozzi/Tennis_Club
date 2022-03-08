@@ -27,5 +27,13 @@ describe 'Errors' do
       expect(new_player_is_valid("Jack", "Black", "American", "01-31-1983", players)).to eq(false)
       expect(new_player_is_valid("Jack", "Worren", "American", "01-01-1983", players)).to eq(true)
     end
+    it 'will return false for player younger than 16yo' do
+      expect(new_player_is_valid("Jack", "Worren", "American", "01-31-2020", players)).to eq(false)
+      expect(new_player_is_valid("Jack", "Worren", "American", "01-01-1983", players)).to eq(true)
+    end
+    it 'will return false for player older than 100yo' do
+      expect(new_player_is_valid("Jack", "Worren", "American", "01-31-1900", players)).to eq(false)
+      expect(new_player_is_valid("Jack", "Worren", "American", "01-01-1983", players)).to eq(true)
+    end
   end
 end
