@@ -7,6 +7,10 @@ class Club
     @players = []
   end
 
+  def sort_players
+    @players.sort_by!(&:score).reverse!
+  end
+
   def new_player(first_name, last_name, nationality, date_of_birth, player = Player.new)
     if new_player_is_valid(first_name, last_name, nationality, date_of_birth, @players)
       player.new(first_name, last_name, nationality, date_of_birth)

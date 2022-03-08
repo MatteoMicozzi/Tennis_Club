@@ -1,5 +1,6 @@
 class Player
-  attr_reader :first_name, :last_name, :nationality, :date_of_birth, :score
+  attr_reader :first_name, :last_name, :nationality, :date_of_birth
+  attr_accessor :score
 
  def initialize
     @first_name
