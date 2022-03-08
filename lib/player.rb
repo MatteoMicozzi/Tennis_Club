@@ -6,6 +6,7 @@ class Player
     @last_name
     @nationality
     @date_of_birth
+    @score = 1200
   end
 
   def new(first_name, last_name, nationality, date_of_birth)
