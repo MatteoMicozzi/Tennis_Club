@@ -14,7 +14,7 @@ class Club
     @players = ranked + unranked
   end
 
-  def update_rank_position()
+  def update_player_position()
     unranked_at_end()
     position = 1
     @players.each { |player|
@@ -25,7 +25,7 @@ class Club
 
   def sort_players()
     @players.sort_by!(&:score).reverse!
-    update_rank_position()
+    update_player_position()
   end
 
   def new_player(first_name, last_name, nationality, date_of_birth, player = Player.new)

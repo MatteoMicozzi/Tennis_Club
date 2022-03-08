@@ -31,7 +31,7 @@ describe Club do
       expect("1st: #{subject.players[0].score}, 2nd: #{subject.players[1].score}, 3rd: #{subject.players[2].score}").to eq("1st: 3, 2nd: 2, 3rd: 1")
     end
   end
-  describe '#update_rank_position' do
+  describe '#update_player_position' do
     it "will update each player rank position in ascending order by points" do
       entering_new_players()
       expect("1st: #{subject.players[0].score}, 2nd: #{subject.players[1].score}, 3rd: #{subject.players[2].score}").to eq("1st: 2, 2nd: 3, 3rd: 1")
