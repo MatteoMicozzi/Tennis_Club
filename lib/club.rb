@@ -1,4 +1,5 @@
 require_relative 'player'
+require_relative 'rank_calculator'
 
 class Club
   attr_reader :players
@@ -48,7 +49,7 @@ class Club
       @printer.print_ones_ranked(rank_name, @players)
     end
   end
-  
+
   def list_players_from(nationality)
     if nationality_is_valid(nationality)
       sort_players()
