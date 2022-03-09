@@ -7,6 +7,8 @@ class NationalityEnteredError < StandardError; end
 class DateFormatError < StandardError; end
 class DoubleNameError < StandardError; end
 class PlayerAgeError < StandardError; end
+class RankDataEnteredError < StandardError; end
+class RankNameEnteredError < StandardError; end
 
 def error_message(error)
   puts "A #{error.class} occurred: #{error.message}"
@@ -22,7 +24,6 @@ def new_player_is_valid(first_name, last_name, nationality, date_of_birth, playe
     raise DoubleNameError, "Please enter a different name! Already exist!" unless inexistent_name(first_name, last_name, players)
     raise PlayerAgeError, "Player too young! At least 16 years old!" unless age(date_of_birth) > 16
     raise PlayerAgeError, "Invalid year entry! Too old!" unless age(date_of_birth) < 100
-
   rescue PlayerDataEnteredError => error
     error_message(error)
   rescue NameTypedError => error
@@ -34,6 +35,19 @@ def new_player_is_valid(first_name, last_name, nationality, date_of_birth, playe
   rescue DoubleNameError => error
     error_message(error)
   rescue PlayerAgeError => error
+    error_message(error)
+  else
+    return true
+  end
+end
+
+def rank_name_is_valid(rank_name)
+  begin
+    raise RankDataEnteredError, "Please enter a string!" unless rank_name.is_a? String
+    raise RankNameEnteredError, "Please enter a valid Rank Name! Choose from: Unranked, Bronze, Silver, Gold, Supersonic Legend" unless valid_rank(rank_name)
+  rescue RankDataEnteredError => error
+    error_message(error)
+  rescue RankNameEnteredError => error
     error_message(error)
   else
     return true

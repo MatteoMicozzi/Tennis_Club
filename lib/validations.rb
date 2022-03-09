@@ -17,3 +17,8 @@ end
 def inexistent_name(first_name, last_name, players)
   players.each { |player| return false if (player.first_name == first_name) && (player.last_name == last_name) }
 end
+
+def valid_rank(rank_name)
+  rank_names = ["Unranked", "Bronze", "Silver", "Gold", "Supersonic Legend"]
+  rank_names.include?(rank_name)
+end

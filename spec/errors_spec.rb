@@ -36,4 +36,15 @@ describe 'Errors' do
       expect(new_player_is_valid("Jack", "Worren", "American", "01-01-1983", players)).to eq(true)
     end
   end
+  describe '#rank_name_is_valid' do
+    it 'will return false for symbol instead of string' do
+      expect(rank_name_is_valid(:Gold)).to eq(false)
+    end
+    it 'will return false for a non rank name' do
+      expect(rank_name_is_valid('Platinum')).to eq(false)
+    end
+    it 'will return true for a real one: Unranked' do
+      expect(rank_name_is_valid('Unranked')).to eq(true)
+    end
+  end
 end

@@ -41,4 +41,11 @@ class Club
     sort_players()
     @printer.print_all(@players)
   end
+
+  def list_players_ranked(rank_name)
+    if rank_name_is_valid(rank_name)
+      sort_players()
+      @printer.print_ones_ranked(rank_name, @players)
+    end
+  end
 end
