@@ -9,32 +9,34 @@ class Club
     @printer = printer
   end
 
-  def unranked_at_end()
+  def unranked_at_end(players)
     ranked = []
     unranked = []
-    @players.each { |player| player.rank_name == 'Unranked' ? unranked << player : ranked << player }
-    @players = ranked + unranked
+    players.each { |player| player.rank_name == 'Unranked' ? unranked << player : ranked << player }
+    return ranked + unranked
   end
 
-  def update_player_position()
-    unranked_at_end()
+  def update_player_position(players)
+    players = unranked_at_end(players)
     position = 1
-    @players.each { |player|
+    players.map! { |player|
         player.rank_position = position
         position += 1
+        player
       }
+    return players
   end
 
-  def sort_players()
-    @players.sort_by!(&:score).reverse!
-    update_player_position()
+  def sort_players(players)
+    players.sort_by!(&:score).reverse!
+    return update_player_position(players)
   end
 
   def new_player(first_name, last_name, nationality, date_of_birth, player = Player.new)
     if new_player_is_valid(first_name, last_name, nationality, date_of_birth, @players)
       player.new(first_name, last_name, nationality, date_of_birth)
       @players.push(player)
-      sort_players()
+      @players = sort_players(@players)
     end
   end
 

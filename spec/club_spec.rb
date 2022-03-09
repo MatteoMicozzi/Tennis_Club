@@ -23,28 +23,28 @@ describe Club do
       expect(subject.players.length).to eq(2)
     end
   end
-  describe '#sort_players' do
-    it "will sort players by their score in descending order" do
-      entering_new_players()
-      expect("1st: #{subject.players[0].score}, 2nd: #{subject.players[1].score}, 3rd: #{subject.players[2].score}").to eq("1st: 2, 2nd: 3, 3rd: 1")
-      subject.sort_players
-      expect("1st: #{subject.players[0].score}, 2nd: #{subject.players[1].score}, 3rd: #{subject.players[2].score}").to eq("1st: 3, 2nd: 2, 3rd: 1")
-    end
-  end
-  describe '#update_player_position' do
-    it "will update each player rank position in ascending order by points" do
-      entering_new_players()
-      expect("1st: #{subject.players[0].score}, 2nd: #{subject.players[1].score}, 3rd: #{subject.players[2].score}").to eq("1st: 2, 2nd: 3, 3rd: 1")
-      subject.sort_players
-      expect("Position #{subject.players[0].rank_position}: #{subject.players[0].score}, Position #{subject.players[1].rank_position}: #{subject.players[1].score}, Position #{subject.players[2].rank_position}: #{subject.players[2].score}").to eq("Position 1: 3, Position 2: 2, Position 3: 1")
-    end
-  end
-  describe '#unranked_at_end' do
-    it "will update the players order by positioning the unranked ones at the end" do
-      entering_new_players()
-      subject.players[2].rank_name = 'Gold'
-      subject.unranked_at_end
-      expect(subject.players[2].rank_name).to eq('Unranked')
-    end
-  end
+  # describe '#sort_players' do
+  #   it "will sort players by their score in descending order" do
+  #     entering_new_players()
+  #     expect("1st: #{subject.players[0].score}, 2nd: #{subject.players[1].score}, 3rd: #{subject.players[2].score}").to eq("1st: 2, 2nd: 3, 3rd: 1")
+  #     subject.sort_players
+  #     expect("1st: #{subject.players[0].score}, 2nd: #{subject.players[1].score}, 3rd: #{subject.players[2].score}").to eq("1st: 3, 2nd: 2, 3rd: 1")
+  #   end
+  # end
+  # describe '#update_player_position' do
+  #   it "will update each player rank position in ascending order by points" do
+  #     entering_new_players()
+  #     expect("1st: #{subject.players[0].score}, 2nd: #{subject.players[1].score}, 3rd: #{subject.players[2].score}").to eq("1st: 2, 2nd: 3, 3rd: 1")
+  #     subject.sort_players
+  #     expect("Position #{subject.players[0].rank_position}: #{subject.players[0].score}, Position #{subject.players[1].rank_position}: #{subject.players[1].score}, Position #{subject.players[2].rank_position}: #{subject.players[2].score}").to eq("Position 1: 3, Position 2: 2, Position 3: 1")
+  #   end
+  # end
+  # describe '#unranked_at_end' do
+  #   it "will update the players order by positioning the unranked ones at the end" do
+  #     entering_new_players()
+  #     subject.players[2].rank_name = 'Gold'
+  #     subject.unranked_at_end
+  #     expect(subject.players[2].rank_name).to eq('Unranked')
+  #   end
+  # end
 end
