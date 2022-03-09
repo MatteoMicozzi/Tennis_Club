@@ -28,4 +28,10 @@ describe Printer do
       expect(subject.print_ones_ranked("Unranked", players)).to eq("Rank Position | Name Surname | Age | Nationality | Ranking | Score\n2 | Bill Ford | #{age('11-09-1983')} | American | Unranked | 900")
     end
   end
+  describe '#print_player_from' do
+    it "will print a list of all players with a specific nationality" do
+      expect(subject.print_player_from('British', players)).to eq("Rank Position | Name Surname | Age | Nationality | Ranking | Score\n1 | Tom Huge | #{age('10-07-1983')} | British | Bronze | 1000")
+      expect(subject.print_player_from('American', players)).to eq("Rank Position | Name Surname | Age | Nationality | Ranking | Score\n2 | Bill Ford | #{age('11-09-1983')} | American | Unranked | 900")
+    end
+  end
 end

@@ -53,3 +53,14 @@ def rank_name_is_valid(rank_name)
     return true
   end
 end
+
+def nationality_is_valid(nationality)
+  begin
+    raise NationalityEnteredError, "Please enter a string!" unless nationality.is_a? String
+    raise NationalityEnteredError, "Please enter a valid Nationality!" unless valid_nationality(nationality)
+  rescue NationalityEnteredError => error
+    error_message(error)
+  else
+    return true
+  end
+end

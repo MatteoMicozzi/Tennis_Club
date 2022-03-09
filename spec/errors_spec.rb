@@ -47,4 +47,15 @@ describe 'Errors' do
       expect(rank_name_is_valid('Unranked')).to eq(true)
     end
   end
+  describe '#nationality_is_valid' do
+    it 'will return false for symbol instead of string' do
+      expect(nationality_is_valid(:American)).to eq(false)
+    end
+    it 'will return false for invalid nationality' do
+      expect(nationality_is_valid('UK')).to eq(false)
+    end
+    it 'will return true for a real one: American' do
+      expect(nationality_is_valid('American')).to eq(true)
+    end
+  end
 end
