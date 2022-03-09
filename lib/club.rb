@@ -39,20 +39,17 @@ class Club
   end
 
   def list_all_players()
-    sort_players()
     @printer.print_all(@players)
   end
 
   def list_players_ranked(rank_name)
     if rank_name_is_valid(rank_name)
-      sort_players()
       @printer.print_ones_ranked(rank_name, @players)
     end
   end
 
   def list_players_from(nationality)
     if nationality_is_valid(nationality)
-      sort_players()
       @printer.print_player_from(nationality, @players)
     end
   end
