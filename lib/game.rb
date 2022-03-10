@@ -8,6 +8,8 @@ class Game
   end
 
   def match(winner_name, loser_name, players)
-
+    ten_percent_loser = ten_percent(loser_name, players)
+    players.map! { |player| player.score += ten_percent_loser if player.name == winner_name; player }
+    players.map! { |player| player.score -= ten_percent_loser if player.name == loser_name; player }
   end
 end
