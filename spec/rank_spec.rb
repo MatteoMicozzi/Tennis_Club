@@ -1,4 +1,4 @@
-require 'rank_calculator'
+require 'rank'
 require 'player'
 
 def tom
@@ -11,20 +11,20 @@ def tom
   [tom]
 end
 
-describe 'Calculate the rank name' do
+describe Rank do
   describe '#rank_detector' do
     it "will give back the right rank name" do
-      expect(rank_detector(3500, 2)).to eq('Unranked')
-      expect(rank_detector(2000, 3)).to eq('Bronze')
-      expect(rank_detector(4000, 3)).to eq('Silver')
-      expect(rank_detector(5000, 3)).to eq('Gold')
-      expect(rank_detector(100000, 3)).to eq('Supersonic Legend')
+      expect(subject.detector(3500, 2)).to eq('Unranked')
+      expect(subject.detector(2000, 3)).to eq('Bronze')
+      expect(subject.detector(4000, 3)).to eq('Silver')
+      expect(subject.detector(5000, 3)).to eq('Gold')
+      expect(subject.detector(100000, 3)).to eq('Supersonic Legend')
     end
   end
   describe '#rank_calculator' do
     it "will check for the changed rank name" do
       players = tom
-      rank_calculator('Tom Huge', players)
+      subject.calculator('Tom Huge', players)
       expect(players[0].rank_name).to eq('Supersonic Legend')
     end
   end
