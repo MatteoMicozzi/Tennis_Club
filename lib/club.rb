@@ -1,14 +1,16 @@
 require_relative 'player'
 require_relative 'errors'
 require_relative 'update_players_position'
+require_relative 'game'
 require_relative 'rank_calculator'
 
 class Club
   attr_reader :players
 
-  def initialize(printer = Printer.new)
+  def initialize(printer = Printer.new, game = Game.new)
     @players = []
     @printer = printer
+    @game = game
   end
 
   def new_player(first_name, last_name, nationality, date_of_birth, player = Player.new)
@@ -33,5 +35,9 @@ class Club
     if nationality_is_valid(nationality)
       @printer.print_player_from(nationality, @players)
     end
+  end
+
+  def match(winner_name, winner_surname, loser_name, loser_surname)
+
   end
 end

@@ -14,8 +14,14 @@ def valid_date(date_format)
   (date.length == 3) && ((1..31).include?(date[0].to_i)) && ((1..12).include?(date[1].to_i)) && (date[2].length == 4)
 end
 
-def inexistent_name(first_name, last_name, players)
-  players.each { |player| return false if (player.name == "#{first_name} #{last_name}") }
+def existent_name(first_name, last_name, players)
+  names = []
+  players.each { |player| names << player.name }
+  if names.include?("#{first_name} #{last_name}")
+    return true
+  else
+    return false
+  end
 end
 
 def valid_rank(rank_name)
