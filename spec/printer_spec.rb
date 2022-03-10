@@ -1,7 +1,7 @@
 require 'printer'
 require 'player'
 
-def players
+def players()
   tom = Player.new
   bill = Player.new
   tom.new('Tom Huge', 'British', '10-07-1983')

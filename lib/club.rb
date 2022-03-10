@@ -1,4 +1,5 @@
 require_relative 'player'
+require_relative 'errors'
 require_relative 'update_players_position'
 require_relative 'rank_calculator'
 
