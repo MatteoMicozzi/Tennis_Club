@@ -19,4 +19,10 @@ describe Game do
       expect(players[0].games_played).to eq(1)
     end
   end
+  describe '#ten_percent' do
+    it "will calculate the 10% of the player score" do
+      players = players()
+      expect(subject.ten_percent('Tom Huge', players)).to eq(100)
+    end
+  end
 end
