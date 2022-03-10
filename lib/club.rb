@@ -1,5 +1,5 @@
 require_relative 'player'
-require_relative 'sort_players'
+require_relative 'update_players_position'
 require_relative 'rank_calculator'
 
 class Club
@@ -14,7 +14,7 @@ class Club
     if new_player_is_valid(first_name, last_name, nationality, date_of_birth, @players)
       player.new(first_name, last_name, nationality, date_of_birth)
       @players.push(player)
-      @players = sort_players(@players)
+      @players = update_players_position(@players)
     end
   end
 
