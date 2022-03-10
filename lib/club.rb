@@ -12,7 +12,7 @@ class Club
 
   def new_player(first_name, last_name, nationality, date_of_birth, player = Player.new)
     if new_player_is_valid(first_name, last_name, nationality, date_of_birth, @players)
-      player.new(first_name, last_name, nationality, date_of_birth)
+      player.new("#{first_name.capitalize} #{last_name.capitalize}", nationality, date_of_birth)
       @players.push(player)
       @players = update_players_position(@players)
     end

@@ -3,7 +3,7 @@ require 'player'
 
 def tom
   tom = Player.new
-  tom.new('Tom', 'Huge', 'British', '10-07-1983')
+  tom.new('Tom Huge', 'British', '10-07-1983')
   tom.rank_position = 1
   tom.rank_name = 'Gold'
   tom.score = 100000
@@ -24,7 +24,7 @@ describe 'Calculate the rank name' do
   describe '#rank_calculator' do
     it "will check for the changed rank name" do
       players = tom
-      rank_calculator('Tom', 'Huge', players)
+      rank_calculator('Tom Huge', players)
       expect(players[0].rank_name).to eq('Supersonic Legend')
     end
   end

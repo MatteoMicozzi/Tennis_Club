@@ -5,7 +5,7 @@ describe 'Errors' do
   describe '#new_Player_is_valid' do
     players = []
     player = Player.new
-    player.new("Jack", "Black", "American", "01-01-1983")
+    player.new("Jack Black", "American", "01-01-1983")
     players << player
 
     it 'will return false for integer in date of birth' do

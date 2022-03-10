@@ -12,9 +12,9 @@ def rank_detector(score, games_played)
   end
 end
 
-def rank_calculator(first_name, last_name, players)
+def rank_calculator(name, players)
   players.map! { |player|
-      player.rank_name = rank_detector(player.score, player.games_played) if (player.first_name == first_name) && (player.last_name == last_name)
+      player.rank_name = rank_detector(player.score, player.games_played) if player.name == name
       player
   }
 end

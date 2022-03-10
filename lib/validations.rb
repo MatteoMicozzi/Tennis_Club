@@ -15,7 +15,7 @@ def valid_date(date_format)
 end
 
 def inexistent_name(first_name, last_name, players)
-  players.each { |player| return false if (player.first_name == first_name) && (player.last_name == last_name) }
+  players.each { |player| return false if (player.name == "#{first_name} #{last_name}") }
 end
 
 def valid_rank(rank_name)

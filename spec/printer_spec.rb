@@ -4,8 +4,8 @@ require 'player'
 def players
   tom = Player.new
   bill = Player.new
-  tom.new('Tom', 'Huge', 'British', '10-07-1983')
-  bill.new('Bill', 'Ford', "American", '11-09-1983')
+  tom.new('Tom Huge', 'British', '10-07-1983')
+  bill.new('Bill Ford', "American", '11-09-1983')
   tom.rank_position = 1
   bill.rank_position = 2
   tom.rank_name = 'Bronze'
