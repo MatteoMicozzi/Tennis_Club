@@ -32,11 +32,11 @@ describe Printer do
                                                                            "2 | Bill Ford | #{Age.new.now('11-09-1983')} | American | Unranked | 900")
     end
   end
-  describe '#print_player_from' do
+  describe '#print_players_from' do
     it "will print a list of all players with a specific nationality" do
-      expect(subject.print_player_from('British', players_printer)).to eq("Rank Position | Name Surname | Age | Nationality | Ranking | Score\n" \
+      expect(subject.print_players_from('British', players_printer)).to eq("Rank Position | Name Surname | Age | Nationality | Ranking | Score\n" \
                                                                           "1 | Tom Huge | #{Age.new.now('10-07-1983')} | British | Bronze | 1000")
-      expect(subject.print_player_from('American', players_printer)).to eq("Rank Position | Name Surname | Age | Nationality | Ranking | Score\n" \
+      expect(subject.print_players_from('American', players_printer)).to eq("Rank Position | Name Surname | Age | Nationality | Ranking | Score\n" \
                                                                            "2 | Bill Ford | #{Age.new.now('11-09-1983')} | American | Unranked | 900")
     end
   end

@@ -58,7 +58,6 @@ def existent_name?(first_name, last_name, players)
   names = []
   players.each { |player| names << player.name }
   result = names.include?("#{first_name} #{last_name}") ? true : false
-  return result
 end
 
 def valid_rank_name?(rank_name)

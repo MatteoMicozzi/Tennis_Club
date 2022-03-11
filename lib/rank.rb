@@ -5,17 +5,18 @@ class Rank
   MINIMUM_SCORE_FOR_SUPERSONIC_LEGEND = 10000
 
   def detector(score, games_played)
-    if games_played < MINIMUM_MATCHES_FOR_RANKING
-      return 'Unranked'
-    elsif score < MINIMUM_SCORE_FOR_SILVER
-      return 'Bronze'
-    elsif score < MINIMUM_SCORE_FOR_GOLD
-      return 'Silver'
-    elsif score < MINIMUM_SCORE_FOR_SUPERSONIC_LEGEND
-      return 'Gold'
-    else
-      return 'Supersonic Legend'
-    end
+    result =
+      if games_played < MINIMUM_MATCHES_FOR_RANKING
+        'Unranked'
+      elsif score < MINIMUM_SCORE_FOR_SILVER
+        'Bronze'
+      elsif score < MINIMUM_SCORE_FOR_GOLD
+        'Silver'
+      elsif score < MINIMUM_SCORE_FOR_SUPERSONIC_LEGEND
+        'Gold'
+      else
+        'Supersonic Legend'
+      end
   end
 
   def calculator(player1_name, player2_name, players)

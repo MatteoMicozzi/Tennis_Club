@@ -2,16 +2,14 @@ require_relative 'player'
 require_relative 'errors'
 require_relative 'sort'
 require_relative 'game'
-require_relative 'rank'
 
 class Club
   attr_reader :players
 
-  def initialize(printer = Printer.new, sort = Sort.new, rank = Rank.new, game = Game.new)
+  def initialize(printer = Printer.new, sort = Sort.new, game = Game.new)
     @players = []
     @printer = printer
     @sort = sort
-    @rank = rank
     @game = game
   end
 
@@ -35,17 +33,18 @@ class Club
 
   def list_players_from(nationality)
     if valid_nationality?(nationality)
-      @printer.print_player_from(nationality, @players)
+      @printer.print_players_from(nationality, @players)
     end
   end
 
   def match(winner_name, winner_surname, loser_name, loser_surname)
-    if valid_player?(winner_name.capitalize, winner_surname.capitalize, @players) && valid_player?(loser_name.capitalize, loser_surname.capitalize, @players)
-      winner_name = "#{winner_name.capitalize} #{winner_surname.capitalize}"
-      loser_name = "#{loser_name.capitalize} #{loser_surname.capitalize}"
-      @game.match(winner_name, loser_name, @players)
-      @rank.calculator(winner_name, loser_name, @players)
-      @players = @sort.players_position(@players)
+    if valid_player?(winner_name.capitalize, winner_surname.capitalize, @players)
+      if valid_player?(loser_name.capitalize, loser_surname.capitalize, @players)
+        winner_name = "#{winner_name.capitalize} #{winner_surname.capitalize}"
+        loser_name = "#{loser_name.capitalize} #{loser_surname.capitalize}"
+        @game.match(winner_name, loser_name, @players)
+        @players = @sort.players_position(@players)
+      end
     end
   end
 end

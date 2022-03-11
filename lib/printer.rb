@@ -26,7 +26,7 @@ class Printer
     list.join("\n")
   end
 
-  def print_player_from(nationality, players)
+  def print_players_from(nationality, players)
     list = [HEADER]
     players.each { |player| list << "#{player.rank_position} | #{player.name} | " \
                                     "#{@age.now(player.date_of_birth)} | #{player.nationality} | " \

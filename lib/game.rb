@@ -1,6 +1,12 @@
+require_relative 'rank'
+
 class Game
   ONE_MATCH = 1
   TEN_PERCENT = 0.1
+
+  def initialize(rank = Rank.new)
+    @rank = rank
+  end
 
   def played_one(player1_name, player2_name, players)
     players.map! { |player| player.games_played += (ONE_MATCH) if player.name == player1_name; player }
@@ -16,5 +22,6 @@ class Game
     played_one(winner_name, loser_name, players)
     players.map! { |player| player.score += ten_percent_loser if player.name == winner_name; player }
     players.map! { |player| player.score -= ten_percent_loser if player.name == loser_name; player }
+    @rank.calculator(winner_name, loser_name, players)
   end
 end

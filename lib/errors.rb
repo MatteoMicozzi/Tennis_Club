@@ -78,7 +78,7 @@ def valid_player?(first_name, last_name, players)
     raise NameTypedError, "Please enter valid name composed by alphabet letters!" \
       "" unless valid_name?(first_name) && valid_name?(last_name)
     raise InexistentNameError, "Please enter a valid player name! Doesn't exist!" \
-      "" unless existent_name?(first_name, last_name, players)
+      "" if not existent_name?(first_name, last_name, players)
   rescue PlayerDataEnteredError => error
     error_message(error)
   rescue NameTypedError => error
