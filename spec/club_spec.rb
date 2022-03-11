@@ -38,4 +38,21 @@ describe Club do
       expect(subject.list_players_from('Mexican')).to eq("Rank Position | Name Surname | Age | Nationality | Ranking | Score\n1 | Chill Nill | 31 | Mexican | Unranked | 1200")
     end
   end
+  describe '#match' do
+    it "will register a match played and return a list of all players with data changed accordingly" do
+      TOM = 0
+      BILL = 1
+      CHILL = 2
+      subject.new_player('Tom', 'Huge', 'British', '10-07-1983')
+      subject.new_player('Bill', 'Ford', "American", '11-09-1983')
+      subject.new_player('Chill', 'Nill', "Mexican", '28-03-1990')
+      subject.match('Tom', 'Huge', 'Bill', 'Ford')
+      subject.match('Tom', 'Huge', 'Bill', 'Ford')
+      subject.match('Tom', 'Huge', 'Bill', 'Ford')
+      expect(subject.list_all_players()).to eq("Rank Position | Name Surname | Age | Nationality | Ranking | Score\n1 | Tom Huge | 38 | British | Bronze | 1525\n2 | Bill Ford | 38 | American | Bronze | 875\n3 | Chill Nill | 31 | Mexican | Unranked | 1200")
+      expect(subject.players[TOM].games_played).to eq(3)
+      expect(subject.players[BILL].games_played).to eq(3)
+      expect(subject.players[CHILL].games_played).to eq(0)
+    end
+  end
 end
