@@ -41,9 +41,10 @@ class Club
 
   def match(winner_name, winner_surname, loser_name, loser_surname)
     if player_is_valid(winner_name.capitalize, winner_surname.capitalize, @players) && player_is_valid(loser_name.capitalize, loser_surname.capitalize, @players)
-      @game.match("#{winner_name.capitalize} #{winner_surname.capitalize}", "#{loser_name.capitalize} #{loser_surname.capitalize}", @players)
-      @rank.calculator("#{winner_name.capitalize} #{winner_surname.capitalize}", @players)
-      @rank.calculator("#{loser_name.capitalize} #{loser_surname.capitalize}", @players)
+      winner_name = "#{winner_name.capitalize} #{winner_surname.capitalize}"
+      loser_name = "#{loser_name.capitalize} #{loser_surname.capitalize}"
+      @game.match(winner_name, loser_name, @players)
+      @rank.calculator(winner_name, loser_name, @players)
       @players = @sort.players_position(@players)
     end
   end

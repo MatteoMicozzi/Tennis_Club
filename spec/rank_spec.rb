@@ -1,14 +1,18 @@
 require 'rank'
 require 'player'
 
-def tom
+def players_rank()
   tom = Player.new
+  bill = Player.new
   tom.new('Tom Huge', 'British', '10-07-1983')
-  tom.rank_position = 1
+  bill.new('Bill Ford', "American", '11-09-1983')
   tom.rank_name = 'Gold'
+  bill.rank_name = 'Unranked'
   tom.score = 100000
+  bill.score = 4000
   tom.games_played = 100
-  [tom]
+  bill.games_played = 30
+  [tom, bill]
 end
 
 describe Rank do
@@ -23,9 +27,12 @@ describe Rank do
   end
   describe '#rank_calculator' do
     it "will check for the changed rank name" do
-      players = tom
-      subject.calculator('Tom Huge', players)
-      expect(players[0].rank_name).to eq('Supersonic Legend')
+      TOM = 0
+      BILL = 1
+      players = players_rank()
+      subject.calculator('Tom Huge', 'Bill Ford',  players)
+      expect(players[TOM].rank_name).to eq('Supersonic Legend')
+      expect(players[BILL].rank_name).to eq('Silver')
     end
   end
 end

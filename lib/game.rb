@@ -1,7 +1,7 @@
 class Game
-  def played_one(winner_name, loser_name, players)
-    players.map! { |player| player.games_played += 1 if player.name == winner_name; player }
-    players.map! { |player| player.games_played += 1 if player.name == loser_name; player }
+  def played_one(player_name_1, player_name_2, players)
+    players.map! { |player| player.games_played += 1 if player.name == player_name_1; player }
+    players.map! { |player| player.games_played += 1 if player.name == player_name_2; player }
   end
 
   def ten_percent_score(name, players)

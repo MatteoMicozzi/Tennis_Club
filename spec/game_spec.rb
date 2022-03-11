@@ -32,10 +32,12 @@ describe Game do
   end
   describe '#match' do
     it "will subtract 10% of score to the loser to give it to the winner" do
+      TOM = 0
+      BILL = 1
       players = players_game()
       subject.match('Tom Huge', 'Bill Ford', players)
-      expect(players[0].score).to eq(1090)
-      expect(players[1].score).to eq(810)
+      expect(players[TOM].score).to eq(1090)
+      expect(players[BILL].score).to eq(810)
     end
   end
 end

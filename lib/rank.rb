@@ -13,7 +13,8 @@ class Rank
     end
   end
 
-  def calculator(name, players)
-    players.map! { |player| player.rank_name = detector(player.score, player.games_played) if player.name == name; player }
+  def calculator(player_name_1, player_name_2, players)
+    players.map! { |player| player.rank_name = detector(player.score, player.games_played) if player.name == player_name_1; player }
+    players.map! { |player| player.rank_name = detector(player.score, player.games_played) if player.name == player_name_2; player }
   end
 end
