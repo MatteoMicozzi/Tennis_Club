@@ -1,4 +1,5 @@
-NATIONALITIES = ["Afghan", "Albanian", "Algerian", "American", "Andorran", "Angolan", "Anguillan",
+NATIONALITIES = [
+  "Afghan", "Albanian", "Algerian", "American", "Andorran", "Angolan", "Anguillan",
   "Citizen of Antigua and Barbuda", "Argentine", "Armenian", "Australian", "Austrian", "Azerbaijani",
   "Bahamian", "Bahraini", "Bangladeshi", "Barbadian", "Belarusian", "Belgian", "Belizean", "Beninese",
   "Bermudian", "Bhutanese", "Bolivian", "Citizen of Bosnia and Herzegovina", "Botswanan", "Brazilian",
@@ -27,7 +28,8 @@ NATIONALITIES = ["Afghan", "Albanian", "Algerian", "American", "Andorran", "Ango
   "Swazi", "Swedish", "Swiss", "Syrian", "Taiwanese", "Tajik", "Tanzanian", "Thai", "Togolese", "Tongan",
   "Trinidadian", "Tristanian", "Tunisian", "Turkish", "Turkmen", "Turks and Caicos Islander", "Tuvaluan",
   "Ugandan", "Ukrainian", "Uruguayan", "Uzbek", "Vatican citizen", "Citizen of Vanuatu", "Venezuelan",
-  "Vietnamese", "Vincentian", "Wallisian", "Welsh", "Yemeni", "Zambian", "Zimbabwean"]
+  "Vietnamese", "Vincentian", "Wallisian", "Welsh", "Yemeni", "Zambian", "Zimbabwean"
+]
 CHARACTERS = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm"
 RANK_NAMES = ["Unranked", "Bronze", "Silver", "Gold", "Supersonic Legend"]
 DD_MM_YYYY = 3
@@ -38,22 +40,21 @@ DAY = 0
 MONTH = 1
 YEAR = 2
 
-
-def valid_name(name)
+def valid_name?(name)
   letters = name.split(//)
   letters.each { |letter| return false unless (CHARACTERS).include?(letter) }
 end
 
-def valid_nationality(nationality)
+def valid_nationality_name?(nationality)
   (NATIONALITIES).include?(nationality)
 end
 
-def valid_date(date_format)
+def valid_date?(date_format)
   date = date_format.split('-')
   (date.length == DD_MM_YYYY) && ((DAYS_MONTH).include?(date[DAY].to_i)) && ((MONTHS_YEAR).include?(date[MONTH].to_i)) && (date[YEAR].length == YEAR_DIGITS)
 end
 
-def existent_name(first_name, last_name, players)
+def existent_name?(first_name, last_name, players)
   names = []
   players.each { |player| names << player.name }
   if names.include?("#{first_name} #{last_name}")
@@ -63,6 +64,6 @@ def existent_name(first_name, last_name, players)
   end
 end
 
-def valid_rank(rank_name)
+def valid_rank_name?(rank_name)
   (RANK_NAMES).include?(rank_name)
 end

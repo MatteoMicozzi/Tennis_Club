@@ -10,6 +10,6 @@ class Age
   def now(date_of_birth, time_now = Time.now)
     dob = date_of_birth.split('-')
     seconds_from_dob = time_now - Time.local(dob[YEAR].to_i, dob[MONTH].to_i, dob[DAY].to_i)
-    (((((seconds_from_dob)/ SECONDS_MINUTE)/ MINUTES_HOUR)/ HOURS_DAY)/ DAYS_YEAR).floor
+    (((((seconds_from_dob)/SECONDS_MINUTE)/MINUTES_HOUR)/HOURS_DAY)/DAYS_YEAR).floor
   end
 end

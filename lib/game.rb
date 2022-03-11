@@ -2,9 +2,9 @@ class Game
   ONE_MATCH = 1
   TEN_PERCENT = 0.1
 
-  def played_one(player_name_1, player_name_2, players)
-    players.map! { |player| player.games_played += (ONE_MATCH) if player.name == player_name_1; player }
-    players.map! { |player| player.games_played += (ONE_MATCH) if player.name == player_name_2; player }
+  def played_one(player1_name, player2_name, players)
+    players.map! { |player| player.games_played += (ONE_MATCH) if player.name == player1_name; player }
+    players.map! { |player| player.games_played += (ONE_MATCH) if player.name == player2_name; player }
   end
 
   def ten_percent_score(name, players)

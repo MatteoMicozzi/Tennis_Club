@@ -16,7 +16,7 @@ class Club
   end
 
   def new_player(first_name, last_name, nationality, date_of_birth, player = Player.new)
-    if new_player_is_valid(first_name, last_name, nationality, date_of_birth, @players)
+    if valid_new_player?(first_name, last_name, nationality, date_of_birth, @players)
       player.new("#{first_name.capitalize} #{last_name.capitalize}", nationality, date_of_birth)
       @players.push(player)
       @players = @sort.players_position(@players)
@@ -28,19 +28,19 @@ class Club
   end
 
   def list_players_ranked(rank_name)
-    if rank_name_is_valid(rank_name)
+    if valid_rank?(rank_name)
       @printer.print_ones_ranked(rank_name, @players)
     end
   end
 
   def list_players_from(nationality)
-    if nationality_is_valid(nationality)
+    if valid_nationality?(nationality)
       @printer.print_player_from(nationality, @players)
     end
   end
 
   def match(winner_name, winner_surname, loser_name, loser_surname)
-    if player_is_valid(winner_name.capitalize, winner_surname.capitalize, @players) && player_is_valid(loser_name.capitalize, loser_surname.capitalize, @players)
+    if valid_player?(winner_name.capitalize, winner_surname.capitalize, @players) && valid_player?(loser_name.capitalize, loser_surname.capitalize, @players)
       winner_name = "#{winner_name.capitalize} #{winner_surname.capitalize}"
       loser_name = "#{loser_name.capitalize} #{loser_surname.capitalize}"
       @game.match(winner_name, loser_name, @players)
