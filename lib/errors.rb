@@ -1,6 +1,9 @@
 require_relative 'validations'
 require_relative 'age'
 
+MINIMUM_AGE = 16
+MAXIMUM_AGE = 100
+
 class PlayerDataEnteredError < StandardError; end
 class NameTypedError < StandardError; end
 class NationalityEnteredError < StandardError; end
@@ -23,8 +26,8 @@ def new_player_is_valid(first_name, last_name, nationality, date_of_birth, playe
     raise NationalityEnteredError, "Please enter a valid Nationality!" unless valid_nationality(nationality)
     raise DateFormatError, "Please enter a valid date format! DD-MM-YYYY" unless valid_date(date_of_birth)
     raise DoubleNameError, "Please enter a different name! Already exist!" if existent_name(first_name, last_name, players)
-    raise PlayerAgeError, "Player too young! At least 16 years old!" unless age.now(date_of_birth) > 16
-    raise PlayerAgeError, "Invalid year entry! Too old!" unless age.now(date_of_birth) < 100
+    raise PlayerAgeError, "Player too young! At least 16 years old!" unless age.now(date_of_birth) >= MINIMUM_AGE
+    raise PlayerAgeError, "Invalid year entry! Too old!" unless age.now(date_of_birth) < MAXIMUM_AGE
   rescue PlayerDataEnteredError => error
     error_message(error)
   rescue NameTypedError => error
