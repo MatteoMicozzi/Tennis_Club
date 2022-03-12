@@ -16,12 +16,17 @@ end
 describe Game do
   describe '#played_one' do
     it "will add 1 to player.games_played" do
+      TOM = 0
+      BILL = 1
+      CHILL = 2
       players = players_game()
-      expect(players[0].games_played).to eq(0)
+      expect(players[TOM].games_played).to eq(0)
+      expect(players[BILL].games_played).to eq(0)
+      expect(players[CHILL].games_played).to eq(0)
       subject.played_one('Tom Huge', 'Bill Ford', players)
-      expect(players[0].games_played).to eq(1)
-      expect(players[1].games_played).to eq(1)
-      expect(players[2].games_played).to eq(0)
+      expect(players[TOM].games_played).to eq(1)
+      expect(players[BILL].games_played).to eq(1)
+      expect(players[CHILL].games_played).to eq(0)
     end
   end
   describe '#ten_percent_score' do
